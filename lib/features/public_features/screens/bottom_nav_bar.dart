@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_shop/features/category_features/screens/choose_category_screen.dart';
 import 'package:online_shop/features/home_features/screen/home_screen.dart';
 import 'package:online_shop/features/public_features/logic/bottomnav_cubit.dart';
 
@@ -17,7 +18,7 @@ class BottomNavBarScreen extends StatefulWidget {
 class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
   List<Widget> screenList = [
     HomeScreen(),
-    Container(),
+    ChooseCategoryScreen(),
     Container(),
     Container(),
   ];

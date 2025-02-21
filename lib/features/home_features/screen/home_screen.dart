@@ -5,6 +5,7 @@ import 'package:online_shop/const/shape/media_query.dart';
 import 'package:online_shop/const/theme/colors.dart';
 import 'package:online_shop/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:online_shop/features/home_features/model/all_products_home_model.dart';
+import 'package:online_shop/features/home_features/screen/filter_screen.dart';
 import 'package:online_shop/features/home_features/services/home_api_repository.dart';
 import 'package:online_shop/features/home_features/model/home_model.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
@@ -82,7 +83,6 @@ class HomeContent extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(Icons.filter_alt, color: Colors.white),
                   onPressed: () {
-                    // فیلتر محصولات
                   },
                 ),
               ),

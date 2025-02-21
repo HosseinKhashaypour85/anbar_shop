@@ -86,6 +86,11 @@ flutter:
     - assets/images/delivery.png
     - assets/images/money.png
     - assets/images/time.png
+    - assets/images/clothes.png
+    - assets/images/jewerly.png
+    - assets/images/elec.png
+    - assets/images/all.png
+    - assets/images/womanclothes.png
 
   fonts:
     - family: irs

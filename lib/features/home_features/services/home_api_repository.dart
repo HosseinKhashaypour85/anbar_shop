@@ -22,24 +22,6 @@ class HomeApiRepository {
       throw Exception("API Request Failed");
     }
   }
-  // all products
-  // Future<List<AllProductsHomeModel>> callAllProductsHomeApi() async {
-  //   try {
-  //     final Response response = await _apiServices.callAllProductsApi();
-  //
-  //     if (response.data is List) {
-  //       return (response.data as List)
-  //           .map((item) => AllProductsHomeModel.fromJson(item))
-  //           .toList();
-  //
-  //     } else {
-  //       throw Exception('❌ Invalid response format for all products');
-  //     }
-  //   } on DioException catch (e) {
-  //     throw Exception('🛑 API Request Failed: ${e.message}');
-  //   } catch (e) {
-  //     throw Exception('❌ Unexpected Error: $e');
-  //   }
-  // }
+
 
 }
