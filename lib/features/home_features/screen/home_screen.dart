@@ -5,7 +5,6 @@ import 'package:online_shop/const/shape/media_query.dart';
 import 'package:online_shop/const/theme/colors.dart';
 import 'package:online_shop/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:online_shop/features/home_features/model/all_products_home_model.dart';
-import 'package:online_shop/features/home_features/screen/filter_screen.dart';
 import 'package:online_shop/features/home_features/services/home_api_repository.dart';
 import 'package:online_shop/features/home_features/model/home_model.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
@@ -30,28 +29,34 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocProvider(
       create: (context) => HomeBloc(HomeApiRepository())..add(CallHomeEvent()),
       child: SafeArea(
-        child: Scaffold(
-          body: BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              if (state is HomeLoadingState) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: primaryColor,
-                  ),
-                );
-              }
-              if (state is HomeCompletedState) {
-                return HomeContent(
-                  homeModel: state.homeModel,
-                );
-              }
-              if (state is HomeErrorState) {
-                return Center(
-                  child: Text('Error: ${state.error.errorMsg}'),
-                );
-              }
-              return SizedBox.shrink();
-            },
+        child: RefreshIndicator(
+          color: primaryColor,
+          onRefresh: () async{
+           BlocProvider.of<HomeBloc>(context).add(CallHomeEvent());
+          },
+          child: Scaffold(
+            body: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                if (state is HomeLoadingState) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: primaryColor,
+                    ),
+                  );
+                }
+                if (state is HomeCompletedState) {
+                  return HomeContent(
+                    homeModel: state.homeModel,
+                  );
+                }
+                if (state is HomeErrorState) {
+                  return Center(
+                    child: Text('Error: ${state.error.errorMsg}'),
+                  );
+                }
+                return SizedBox.shrink();
+              },
+            ),
           ),
         ),
       ),

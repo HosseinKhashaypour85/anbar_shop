@@ -29,7 +29,6 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
   Future<List<CategoryModel>> fetchProducts(String category) async {
     final response = await CategoryApiServices().callCategoryApi(category);
 
-    // بررسی وضعیت پاسخ API
     if (response.statusCode == 200) {
       print(response.data); // چاپ داده‌ها برای بررسی
       return (response.data as List)
@@ -63,7 +62,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 0.5, // نسبت ابعاد ویجت‌ها
+              childAspectRatio: 0.5, 
             ),
             itemCount: products.length,
             itemBuilder: (context, index) {

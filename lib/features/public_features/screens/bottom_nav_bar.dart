@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_shop/features/auth_features/screens/auth_screen.dart';
 import 'package:online_shop/features/category_features/screens/choose_category_screen.dart';
 import 'package:online_shop/features/home_features/screen/home_screen.dart';
 import 'package:online_shop/features/public_features/logic/bottomnav_cubit.dart';
@@ -20,7 +21,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     HomeScreen(),
     ChooseCategoryScreen(),
     Container(),
-    Container(),
+    AuthScreen(),
   ];
 
   @override

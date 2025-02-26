@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_shop/features/auth_features/logic/auth_bloc.dart';
+import 'package:online_shop/features/auth_features/services/auth_api_repository.dart';
 import 'package:online_shop/features/category_features/logic/bloc/category_bloc.dart';
 import 'package:online_shop/features/category_features/services/category_api_repository.dart';
 import 'package:online_shop/features/home_features/logic/bloc/home_bloc.dart';
@@ -10,8 +12,9 @@ import 'package:online_shop/features/intro_features/logic/intro_cubit.dart';
 import 'package:online_shop/features/intro_features/screens/splash_screen.dart';
 import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
 
+import 'features/auth_features/screens/auth_screen.dart';
+import 'features/auth_features/screens/sign_up_screen.dart';
 import 'features/category_features/screens/choose_category_screen.dart';
-import 'features/home_features/screen/filter_screen.dart';
 import 'features/home_features/screen/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
 import 'features/public_features/logic/bottomnav_cubit.dart';
@@ -45,6 +48,11 @@ class MyApp extends StatelessWidget {
               CategoryApiRepository(),
             ),
           ),
+          BlocProvider(
+            create: (context) => AuthBloc(
+              AuthApiRepository(),
+            ),
+          )
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -57,6 +65,9 @@ class MyApp extends StatelessWidget {
             Locale('fa'),
           ],
           initialRoute: SplashScreen.screenId,
+          onUnknownRoute: (settings) => MaterialPageRoute(
+            builder: (context) => UnknownScreen(),
+          ),
           routes: {
             UnknownScreen.screenId: (context) => UnknownScreen(),
             BottomNavBarScreen.screenId: (context) => BottomNavBarScreen(),
@@ -64,6 +75,8 @@ class MyApp extends StatelessWidget {
             IntroScreen.screenId: (context) => IntroScreen(),
             HomeScreen.screenId: (context) => HomeScreen(),
             ChooseCategoryScreen.screenId: (context) => ChooseCategoryScreen(),
+            AuthScreen.screenId: (context) => AuthScreen(),
+            SignUpScreen.screenId: (context) => SignUpScreen(),
           },
           // showSemanticsDebugger: true,
         ),
