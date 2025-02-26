@@ -47,6 +47,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   animate_do: ^3.3.9
   smooth_page_indicator: ^1.2.0+3
+  permission_handler: ^11.3.1
+  device_info_plus: ^11.2.1
+  vibration: ^2.0.1
 
   flutter_localizations:
     sdk: flutter
