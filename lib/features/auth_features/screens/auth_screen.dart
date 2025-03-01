@@ -2,7 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_shop/features/profile_features/screen/profile_screen.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
+import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../const/shape/border_radius.dart';
@@ -84,7 +86,10 @@ class _AuthScreenState extends State<AuthScreen> {
           if (state is SignInAuthCompletedState) {
             SecureStorage().saveUserToken(state.token);
             savePhoneNumber(phoneNumController.text);
-           print('object');
+            Navigator.pushReplacementNamed(
+              context,
+              BottomNavBarScreen.screenId,
+            );
           }
         },
       ),
@@ -114,9 +119,9 @@ class AuthScreenContent extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () async{
+              onTap: () async {
                 final url = 'https://www.hosseinkhashaypour.ir';
-                if(await canLaunchUrlString(url)){
+                if (await canLaunchUrlString(url)) {
                   launchUrlString(url);
                 }
               },

@@ -10,6 +10,7 @@ import 'package:online_shop/features/home_features/logic/bloc/home_bloc.dart';
 import 'package:online_shop/features/home_features/services/home_api_repository.dart';
 import 'package:online_shop/features/intro_features/logic/intro_cubit.dart';
 import 'package:online_shop/features/intro_features/screens/splash_screen.dart';
+import 'package:online_shop/features/public_features/logic/token_checker/token_check_cubit.dart';
 import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
 
 import 'features/auth_features/screens/auth_screen.dart';
@@ -17,6 +18,7 @@ import 'features/auth_features/screens/sign_up_screen.dart';
 import 'features/category_features/screens/choose_category_screen.dart';
 import 'features/home_features/screen/home_screen.dart';
 import 'features/intro_features/screens/intro_screen.dart';
+import 'features/profile_features/screen/profile_screen.dart';
 import 'features/public_features/logic/bottomnav_cubit.dart';
 import 'features/public_features/screens/unknown_screen.dart';
 
@@ -52,7 +54,10 @@ class MyApp extends StatelessWidget {
             create: (context) => AuthBloc(
               AuthApiRepository(),
             ),
-          )
+          ),
+          BlocProvider(
+            create: (context) => TokenCheckCubit(),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -77,6 +82,7 @@ class MyApp extends StatelessWidget {
             ChooseCategoryScreen.screenId: (context) => ChooseCategoryScreen(),
             AuthScreen.screenId: (context) => AuthScreen(),
             SignUpScreen.screenId: (context) => SignUpScreen(),
+            ProfileScreen.screenId: (context) => ProfileScreen(),
           },
           // showSemanticsDebugger: true,
         ),

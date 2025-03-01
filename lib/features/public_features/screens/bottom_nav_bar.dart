@@ -6,6 +6,7 @@ import 'package:online_shop/features/home_features/screen/home_screen.dart';
 import 'package:online_shop/features/public_features/logic/bottomnav_cubit.dart';
 
 import '../../../const/theme/colors.dart';
+import '../../profile_features/screen/check_profile.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
   const BottomNavBarScreen({super.key});
@@ -21,7 +22,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     HomeScreen(),
     ChooseCategoryScreen(),
     Container(),
-    AuthScreen(),
+    ProfileCheck(),
   ];
 
   @override
