@@ -12,8 +12,10 @@ class TokenCheckCubit extends Cubit<TokenCheckState> {
     final status = await SecureStorage().getUserToken();
     if (status != null) {
       emit(TokenCheckIsLogedState());
+      // print('ypu have token');
     } else {
       emit(TokenCheckIsNotLogedState());
+      // print('ypu no have token');
     }
   }
 }

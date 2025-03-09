@@ -33,7 +33,7 @@ class PasswordFieldWidget extends StatelessWidget {
       // height: getHeight(context, 0.07),
       decoration: BoxDecoration(
         borderRadius: getBorderRadiusFunc(10),
-        color: greyColor,
+        color: Colors.white,
       ),
       child: TextFormField(
           textAlign: TextAlign.start,

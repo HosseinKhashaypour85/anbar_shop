@@ -6,6 +6,7 @@ import 'package:online_shop/const/theme/colors.dart';
 import 'package:online_shop/features/category_features/model/category_model.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
 import '../../../const/shape/border_radius.dart';
+import '../../products_features/screen/products_info_screen.dart';
 import '../services/category_api_services.dart';
 
 class ProductListingScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 0.5, 
+              childAspectRatio: 0.5,
             ),
             itemCount: products.length,
             itemBuilder: (context, index) {
@@ -90,7 +91,7 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
-                          '${product.price?.toStringAsFixed(2) ?? ''} تومان',
+                          product.price.toString() + '\$',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -104,10 +105,22 @@ class _ProductListingScreenState extends State<ProductListingScreen> {
                           ),
                         ),
                         onPressed: () {
-                          //   add to cart
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            ProductsInfoScreen.screenId,
+                            arguments: {
+                              'id': product.id,
+                              'title': product.title,
+                              'image': product.image,
+                              'desc': product.description,
+                              'price': product.price,
+                              'rating': product.rating,
+                            },
+                            (route) => false,
+                          );
                         },
                         child: Text(
-                          'افزودن به سبد خرید',
+                          'مشاهده محصول',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'irs',

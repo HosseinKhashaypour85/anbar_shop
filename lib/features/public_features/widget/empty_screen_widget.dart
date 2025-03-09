@@ -28,9 +28,9 @@ class EmptyWidget extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontFamily: 'sahel',
+                fontFamily: 'irs',
                 fontSize: 16.sp,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ],

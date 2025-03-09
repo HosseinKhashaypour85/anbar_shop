@@ -4,6 +4,7 @@ import 'package:online_shop/const/theme/colors.dart';
 
 import '../../../const/shape/border_radius.dart';
 import '../../../const/shape/media_query.dart';
+import '../../products_features/screen/products_info_screen.dart';
 import '../../public_features/functions/pre_values/pre_values.dart';
 import '../model/home_model.dart';
 
@@ -28,7 +29,18 @@ class ProductsFirstSlider extends StatelessWidget {
             final helper = homeModel[index];
             return GestureDetector (
               onTap: () {
-              //   navigate to info screen
+                Navigator.pushReplacementNamed(
+                    context,
+                    ProductsInfoScreen.screenId,
+                    arguments: {
+                      'id' : helper.id,
+                      'title' : helper.title,
+                      'image' : helper.image,
+                      'desc' : helper.description,
+                      'price' : helper.price,
+                      'rating' : helper.rating,
+                    }
+                );
               },
               child: Container(
                 decoration: BoxDecoration(

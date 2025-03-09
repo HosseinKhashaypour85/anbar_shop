@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_shop/features/profile_features/widget/fav_products_widget.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../const/shape/border_radius.dart';
@@ -95,6 +96,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     launchUrlString(url);
                   }
                 },
+              ),
+              FavProducts(
+                title: 'علاقه مندی ها',
+                onTap: () {},
               ),
               Spacer(),
               Column(

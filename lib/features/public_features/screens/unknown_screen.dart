@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_shop/const/shape/media_query.dart';
 import 'package:online_shop/const/theme/colors.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
+import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
 
 class UnknownScreen extends StatefulWidget {
   const UnknownScreen({super.key});
@@ -22,7 +23,7 @@ class _UnknownScreenState extends State<UnknownScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, BottomNavBarScreen.screenId);
             },
             icon: Icon(
               Icons.arrow_forward,

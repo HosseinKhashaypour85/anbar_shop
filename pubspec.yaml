@@ -41,7 +41,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   expandable_text: ^2.3.0
   hive: ^2.2.3
-  hive_generator: ^2.0.1
+  hive_flutter: ^1.1.0
   connectivity_plus: ^6.1.1
   flutter_custom_clippers: ^2.1.0
   flutter_screenutil: ^5.9.3
@@ -50,6 +50,9 @@ dependencies:
   permission_handler: ^11.3.1
   device_info_plus: ^11.2.1
   vibration: ^2.0.1
+  json_annotation: ^4.9.0
+  flutter_rating_bar: ^4.0.1
+  uuid: ^4.5.1
 
   flutter_localizations:
     sdk: flutter
@@ -62,6 +65,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^2.0.1
+  build_runner: ^2.0.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -94,6 +99,7 @@ flutter:
     - assets/images/elec.png
     - assets/images/all.png
     - assets/images/womanclothes.png
+    - assets/images/empty_box.png
 
   fonts:
     - family: irs

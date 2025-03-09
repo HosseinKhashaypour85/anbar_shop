@@ -1,7 +1,7 @@
 part of 'token_check_cubit.dart';
 
 @immutable
-sealed class TokenCheckState {}
+abstract class TokenCheckState {}
 
 
 class TokenCheckInitial extends TokenCheckState {}
