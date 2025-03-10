@@ -21,6 +21,9 @@ import 'package:online_shop/features/intro_features/screens/splash_screen.dart';
 import 'package:online_shop/features/products_features/screen/products_info_screen.dart';
 import 'package:online_shop/features/public_features/logic/token_checker/token_check_cubit.dart';
 import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
+import 'package:online_shop/features/search_features/logic/search_bloc.dart';
+import 'package:online_shop/features/search_features/screen/search_screen.dart';
+import 'package:online_shop/features/search_features/services/search_api_repository.dart';
 
 import 'features/auth_features/screens/auth_screen.dart';
 import 'features/auth_features/screens/sign_up_screen.dart';
@@ -32,7 +35,7 @@ import 'features/profile_features/screen/profile_screen.dart';
 import 'features/public_features/logic/bottomnav_cubit.dart';
 import 'features/public_features/screens/unknown_screen.dart';
 
-void main() async{
+void main() async {
   HttpOverrides.global = MyHttpOverrides();
   await Hive.initFlutter();
   Hive.registerAdapter(FavoriteAdapter());
@@ -76,6 +79,11 @@ class MyApp extends StatelessWidget {
               CartApiRepository(),
             ),
           ),
+          BlocProvider(
+            create: (context) => SearchBloc(
+              SearchApiRepository(),
+            ),
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -102,8 +110,10 @@ class MyApp extends StatelessWidget {
             SignUpScreen.screenId: (context) => SignUpScreen(),
             ProfileScreen.screenId: (context) => ProfileScreen(),
             CartScreen.screenId: (context) => CartScreen(),
-            ProductsInfoScreen.screenId : (context) => ProductsInfoScreen(),
-            PaymentSWebViewScreen.screenId : (context) => PaymentSWebViewScreen(),
+            ProductsInfoScreen.screenId: (context) => ProductsInfoScreen(),
+            PaymentSWebViewScreen.screenId: (context) =>
+                PaymentSWebViewScreen(),
+            SearchScreen.screenId: (context) => SearchScreen(),
           },
           // showSemanticsDebugger: true,
         ),

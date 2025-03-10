@@ -27,7 +27,7 @@ class ErrorScreenWidget extends StatelessWidget {
               Text(
                 errorMsg,
                 style: TextStyle(
-                  fontFamily: 'sahel',
+                  fontFamily: 'irs',
                   fontSize: 18.sp,
                 ),
                 textAlign: TextAlign.center,
@@ -44,7 +44,7 @@ class ErrorScreenWidget extends StatelessWidget {
                 child: Text(
                   'تلاش مجدد',
                   style: TextStyle(
-                    fontFamily: 'sahel',
+                    fontFamily: 'irs',
                     fontSize: 16.sp,
                   ),
                 ),

@@ -12,7 +12,7 @@ class CartApiServices {
     try {
       final token = await SecureStorage().getUserToken();
       if (token == null || token.isEmpty) {
-        throw Exception("توکن نامعتبر است");
+        throw Exception("ابتدا وارد حساب کاربری خود شوید");
       }
 
       final String idGenerator = IdGenerator().idGenerator();

@@ -3,8 +3,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class CustomRatingBar extends StatelessWidget {
   final double rating;
+  bool changeRate;
 
-  const CustomRatingBar({super.key, required this.rating});
+   CustomRatingBar({super.key, required this.rating , required this.changeRate});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class CustomRatingBar extends StatelessWidget {
       maxRating: 5,
       initialRating: rating,
       allowHalfRating: true,
-      ignoreGestures: true,
+      ignoreGestures: changeRate,
       ratingWidget: RatingWidget(
         full: const Icon(Icons.star, color: Colors.orange, size: 15,),
         half: const Icon(Icons.star_half, color: Colors.orange , size: 15,),

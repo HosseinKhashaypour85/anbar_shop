@@ -8,6 +8,7 @@ import 'package:online_shop/features/home_features/model/all_products_home_model
 import 'package:online_shop/features/home_features/services/home_api_repository.dart';
 import 'package:online_shop/features/home_features/model/home_model.dart';
 import 'package:online_shop/features/public_features/functions/pre_values/pre_values.dart';
+import 'package:online_shop/features/public_features/widget/rating_widget.dart';
 import 'package:online_shop/features/public_features/widget/search_bar_widget.dart';
 
 import '../../../const/shape/border_radius.dart';
@@ -31,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SafeArea(
         child: RefreshIndicator(
           color: primaryColor,
-          onRefresh: () async{
-           BlocProvider.of<HomeBloc>(context).add(CallHomeEvent());
+          onRefresh: () async {
+            BlocProvider.of<HomeBloc>(context).add(CallHomeEvent());
           },
           child: Scaffold(
             body: BlocBuilder<HomeBloc, HomeState>(
@@ -74,6 +75,112 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void showModalBottomFunc(BuildContext context) {
+      showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "فیلتر محصولات",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'irs',
+                  ),
+                ),
+                SizedBox(height: 10),
+                Text("دسته‌بندی:",
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                Wrap(
+                  spacing: 8,
+                  children: ["همه", "مردانه", "زنانه", "الکترونیک", "جواهرات"]
+                      .map((category) {
+                    return FilterChip(
+                      label: Text(
+                        category,
+                        style: TextStyle(
+                          fontFamily: 'irs',
+                        ),
+                      ),
+                      onSelected: (bool selected) {},
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 15),
+                Text(
+                  "محدوده قیمت:",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'irs',
+                  ),
+                ),
+                RangeSlider(
+                  values: RangeValues(10, 200),
+                  min: 0,
+                  max: 500,
+                  divisions: 10,
+                  labels: RangeLabels("10\$", "200\$"),
+                  onChanged: (RangeValues values) {},
+                ),
+                SizedBox(height: 15),
+                Text(
+                  "امتیاز:",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'irs',
+                  ),
+                ),
+                Row(
+                  // children: List.generate(
+                  //   5,
+                  //   (index) {
+                  //     return IconButton(
+                  //       icon: Icon(
+                  //         Icons.star,
+                  //         color: index < 4 ? Colors.amber : Colors.grey,
+                  //       ),
+                  //       onPressed: () {},
+                  //     );
+                  //   },
+                  // ),
+                  children: [CustomRatingBar(rating: 0 , changeRate: false,)],
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    minimumSize: Size(double.infinity, 50),
+                  ),
+                  child: Text(
+                    "اعمال فیلتر",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'irs',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -88,6 +195,7 @@ class HomeContent extends StatelessWidget {
                 child: IconButton(
                   icon: Icon(Icons.filter_alt, color: Colors.white),
                   onPressed: () {
+                    showModalBottomFunc(context);
                   },
                 ),
               ),
@@ -103,4 +211,3 @@ class HomeContent extends StatelessWidget {
     );
   }
 }
-

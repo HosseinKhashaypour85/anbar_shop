@@ -43,6 +43,7 @@ class _ProductsInfoScreenState extends State<ProductsInfoScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: primaryColor,
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             onPressed: () {
@@ -119,7 +120,7 @@ class _ProductsInfoScreenState extends State<ProductsInfoScreen> {
                             fontSize: 16.sp,
                           ),
                         ),
-                        CustomRatingBar(rating: productRate),
+                        CustomRatingBar(rating: productRate ,changeRate: true),
                       ],
                     ),
                     SizedBox(height: 20.sp),
@@ -168,7 +169,7 @@ class _ProductsInfoScreenState extends State<ProductsInfoScreen> {
         String? token = await SecureStorage().getUserToken();
 
         if (token == null || token.isEmpty) {
-          getSnackBarWidget(context, 'توکن نامعتبر است', Colors.red);
+          getSnackBarWidget(context, 'ابتدا وارد حساب کاربری خود شوید', Colors.red);
           return;
         }
         BlocProvider.of<CartBloc>(context).add(

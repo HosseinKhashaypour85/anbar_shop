@@ -5,6 +5,7 @@ import '../../../const/responsive.dart';
 import '../../../const/shape/border_radius.dart';
 import '../../../const/shape/media_query.dart';
 import '../../../const/theme/colors.dart';
+import '../../search_features/screen/search_screen.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({
@@ -18,7 +19,7 @@ class SearchBarWidget extends StatelessWidget {
           horizontal: getWidth(context, 0.02), vertical: 8.sp),
       child: InkWell(
         onTap: () {
-          // Navigator.pushNamed(context, SearchScreen.screenId ,);
+          Navigator.pushNamed(context, SearchScreen.screenId ,);
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: getWidth(context, 0.03)),

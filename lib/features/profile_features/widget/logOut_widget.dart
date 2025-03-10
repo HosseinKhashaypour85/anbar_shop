@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_shop/features/public_features/screens/bottom_nav_bar.dart';
 
 import '../../../const/shape/border_radius.dart';
 import '../../../const/shape/media_query.dart';
@@ -33,7 +34,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
         ),
         onPressed: () {
           SecureStorage().deleteUserToken();
-          Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => ProfileCheck(),));
+          Navigator.pushNamedAndRemoveUntil(context, BottomNavBarScreen.screenId, (route) => false,);
           getSnackBarWidget(context, 'از حساب خارج شدید', Colors.red);
         },
         child: Text(
